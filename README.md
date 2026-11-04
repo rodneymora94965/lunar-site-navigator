@@ -4,6 +4,8 @@
 
 *Illustrative render of site 456, AI-assisted. The lander, rocks, stars and Earth's continents are invented.*
 
+**Live app / App en linea:** https://lunar-site-navigator.rodneymora94965.workers.dev
+
 ## English
 
 A single-file web tool for comparing landing sites and dates near the lunar south pole: when there is Sun for power and when there is line of sight to Earth, using precomputed ephemerides and terrain horizons.
