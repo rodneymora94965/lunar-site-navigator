@@ -1,0 +1,11 @@
+config                             sesgo(nuestro-LROC)  Pearson  Spearman error abs
+radio solar 0     altura 0    m                      -0.6     0.53      0.67      25.1
+radio solar 0.27  altura 0    m                      -0.0     0.56      0.69      24.8
+radio solar 0     altura 2    m                      +0.5     0.63      0.74      24.0
+radio solar 0.27  altura 2    m                      +1.1     0.66      0.76      23.7
+
+Por nivel de iluminacion LROC (config radio solar + 2 m): nuestro medio vs LROC medio
+  LROC   0-10  %:  190 puntos | LROC   1.0 | nuestro  28.2 | dif  +27.2
+  LROC  10-30  %:   36 puntos | LROC  21.0 | nuestro  24.4 | dif   +3.5
+  LROC  30-60  %:  115 puntos | LROC  46.2 | nuestro  33.4 | dif  -12.8
+  LROC  60-100 %:  100 puntos | LROC  77.7 | nuestro  44.3 | dif  -33.4

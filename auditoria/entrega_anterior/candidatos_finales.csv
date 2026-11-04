@@ -1,0 +1,11 @@
+﻿id,x_m,y_m,lat_deg,lon_east_deg,elevation_m,area_centers_m2,mean_slope_deg,sun_time_pct,earth_time_pct,both_time_pct,longest_continuous_sunless_days,longest_continuous_earthless_days,wide_horizon_max_deg,selection_rank,selection,selection_criterion
+14,204.0,625.0,-89.97832,18.0767,1267.0,331950.0,4.93,48.5,52.3,26.8,17.4,14.0,4.89,1,Recommended,"Maximize both-time %, then minimize longest Sun-less interval, then mean slope"
+456,-7899.8,-4718.8,-89.69654,-120.8512,666.0,4474275.0,4.91,24.2,54.2,16.1,25.0,13.8,11.55,2,Alternative 1,"Maximize both-time %, then minimize longest Sun-less interval, then mean slope"
+1358,-5864.2,-10321.1,-89.60853,-150.3958,1446.0,211475.0,4.58,26.6,50.9,15.1,25.5,15.0,8.63,3,Alternative 2,"Maximize both-time %, then minimize longest Sun-less interval, then mean slope"
+964,-8561.2,-7284.7,-89.62930,-130.3944,864.0,1207800.0,4.15,19.0,50.6,14.6,146.8,14.6,14.50,4,Alternative 3,"Maximize both-time %, then minimize longest Sun-less interval, then mean slope"
+1417,-7953.8,-12597.9,-89.50868,-147.7334,1575.0,2837650.0,4.64,19.8,23.0,2.2,27.1,22.2,9.28,5,Compared,"Maximize both-time %, then minimize longest Sun-less interval, then mean slope"
+2298,-4212.9,-14706.9,-89.49549,-164.0152,1132.0,413975.0,6.05,32.0,0.0,0.0,22.2,3652.5,8.91,6,Compared,"Maximize both-time %, then minimize longest Sun-less interval, then mean slope"
+1643,-3529.6,-13299.9,-89.54622,-165.1371,1259.0,1939950.0,4.72,14.8,14.7,0.0,174.0,80.8,6.31,7,Compared,"Maximize both-time %, then minimize longest Sun-less interval, then mean slope"
+2238,-6193.8,-14581.4,-89.47756,-156.9855,1277.0,721950.0,4.93,3.9,0.0,0.0,264.2,3652.5,9.71,8,Compared,"Maximize both-time %, then minimize longest Sun-less interval, then mean slope"
+616,6479.0,-5992.1,-89.70897,132.7642,-2735.0,2550400.0,4.98,0.0,0.0,0.0,3652.5,3652.5,26.28,9,Compared,"Maximize both-time %, then minimize longest Sun-less interval, then mean slope"
+1598,-4306.9,-12223.6,-89.57260,-160.5904,1145.0,586525.0,5.07,0.0,0.0,0.0,3652.5,3652.5,11.60,10,Compared,"Maximize both-time %, then minimize longest Sun-less interval, then mean slope"

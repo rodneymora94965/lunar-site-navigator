@@ -1,0 +1,24 @@
+Sol: AVGVISIB_85S_060M_201608 (5058, 5058) escala 4e-05 offset 0.0 px 60.0 m origen (2528.5,2528.5) DN max etiqueta 22111, DN max real 22111 -> 88.4 %
+  orientacion (sx,sy,swap) por correlacion: (1, 1, 0): 0.962; (-1, -1, 1): 0.518; (-1, -1, 0): 0.423
+Tierra: AVGVISIB_85S_060M_201608_EARTH (5058, 5058) escala 4e-05 offset 0.0 px 60.0 m origen (2528.5,2528.5) DN max etiqueta 25000, DN max real 25000 -> 100.0 %
+  orientacion (sx,sy,swap) por correlacion: (1, 1, 0): 0.964; (-1, -1, 1): 0.537; (1, 1, 1): 0.045
+Sin factor de calibracion. Modelo: 19 anos desde 2026, cada 6 h. PGDA: promedio de 18,6 anos segun NASA PGDA, disco completo ('cualquier fraccion'); 2009-2013 en la etiqueta son las fechas de los datos LOLA.
+magnitud  conjunto    config                   n    sesgo   MAE    r      pendiente
+Sol       celda      5 m, punto (app)         121    -0.3    1.6  0.965    0.95
+Sol       candidato  5 m, punto (app)         10     +3.1    3.8  0.946    1.02
+Tierra    celda      5 m, centro (app)        121    -1.3    3.1  0.961    0.91
+Tierra    candidato  5 m, centro (app)        10     -2.2    2.6  0.994    0.97
+Sol       celda      5 m, disco (como PGDA)   121    +1.2    1.3  0.964    1.03
+Sol       candidato  5 m, disco (como PGDA)   10     +5.4    5.4  0.940    1.12
+Tierra    celda      5 m, limbo (como PGDA)   121    +1.6    1.8  0.964    1.00
+Tierra    candidato  5 m, limbo (como PGDA)   10     +1.7    1.7  0.997    1.02
+Sol       celda      2 m, punto               121    -0.7    1.6  0.972    0.91
+Sol       candidato  2 m, punto               10     +0.1    1.2  0.992    0.97
+Tierra    celda      2 m, centro              121    -1.8    3.5  0.954    0.91
+Tierra    candidato  2 m, centro              10     -2.8    2.8  0.994    0.95
+Sol       celda      10 m, punto              121    +0.3    1.9  0.947    0.99
+Sol       candidato  10 m, punto              10     +6.2    6.8  0.886    1.07
+Tierra    celda      10 m, centro             121    -0.7    3.1  0.960    0.92
+Tierra    candidato  10 m, centro             10     -1.9    2.3  0.995    0.97
+Mayores diferencias en Sol: celda -6050.0_-10050.0: +35.5; celda -1050.0_-11050.0: +15.7; celda -2950.0_-7950.0: +14.5; candidato 1643: +14.0; candidato 14: +7.3; candidato 1358: +5.0
+Mayores diferencias en Tierra: celda -6050.0_-10050.0: +51.7; celda -1050.0_-11050.0: +24.5; celda 1950.0_-10950.0: -13.5; celda -6050.0_-6050.0: +9.8; celda 1050.0_-10050.0: -9.6; celda -1950.0_-4950.0: -8.6

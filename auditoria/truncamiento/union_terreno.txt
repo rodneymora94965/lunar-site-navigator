@@ -1,0 +1,4 @@
+Franja 250-304 km, malla de 240 m, 1631632 puntos
+mediana (120 m - 80 m) -0.07 m; media +0.00 m; desviacion 2.32 m; p95 de |dif| 4.69 m; max |dif| 27.3 m
+Limites: |mediana| <= 5 m y p95 <= 50 m. Resultado: DENTRO
+No se aplica ningun ajuste.

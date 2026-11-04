@@ -1,0 +1,27 @@
+WAC_MOVIE_S20091022T0306  hora 2009-10-22 03:09:57 (archivo)  IMG PC_REAL 32 bits  validos 1.00  luz observada 0.08  umbral 0.04234
+   modelo        acuerdo 0.819  balanceada 0.884  MCC +0.474  VP 479 VN 4763 FP 1139 FN 19
+   espejo        acuerdo 0.607  balanceada 0.360  MCC -0.160  VP 34 VN 3848 FP 2054 FN 464
+   giro180       acuerdo 0.608  balanceada 0.329  MCC -0.197  VP 0 VN 3889 FP 2013 FN 498
+   fecha+14,77d  acuerdo 0.611  balanceada 0.331  MCC -0.195  VP 0 VN 3911 FP 1991 FN 498
+WAC_MOVIE_S20091106T2212  hora 2009-11-06 22:16:04 (archivo)  IMG PC_REAL 32 bits  validos 1.00  luz observada 0.26  umbral 0.02221
+   modelo        acuerdo 0.947  balanceada 0.964  MCC +0.877  VP 1639 VN 4422 FP 338 FN 1
+   espejo        acuerdo 0.557  balanceada 0.395  MCC -0.222  VP 102 VN 3462 FP 1298 FN 1538
+   giro180       acuerdo 0.512  balanceada 0.352  MCC -0.302  VP 37 VN 3239 FP 1521 FN 1603
+   fecha+14,77d  acuerdo 0.510  balanceada 0.350  MCC -0.303  VP 38 VN 3225 FP 1535 FN 1602
+WAC_MOVIE_S20091101T2323  hora 2009-11-01 23:27:05 (archivo)  IMG PC_REAL 32 bits  validos 1.00  luz observada 0.26  umbral 0.01718
+   modelo        acuerdo 0.916  balanceada 0.941  MCC +0.815  VP 1618 VN 4247 FP 520 FN 15
+   espejo        acuerdo 0.706  balanceada 0.515  MCC +0.042  VP 203 VN 4314 FP 453 FN 1430
+   giro180       acuerdo 0.596  balanceada 0.404  MCC -0.231  VP 20 VN 3797 FP 970 FN 1613
+   fecha+14,77d  acuerdo 0.590  balanceada 0.401  MCC -0.235  VP 24 VN 3750 FP 1017 FN 1609
+WAC_MOVIE_S20091116T0257  hora 2009-11-16 03:00:42 (archivo)  IMG PC_REAL 32 bits  validos 1.00  luz observada 0.10  umbral 0.01234
+   modelo        acuerdo 0.947  balanceada 0.965  MCC +0.777  VP 611 VN 5452 FP 329 FN 8
+   espejo        acuerdo 0.758  balanceada 0.780  MCC +0.361  VP 500 VN 4350 FP 1431 FN 119
+   giro180       acuerdo 0.552  balanceada 0.320  MCC -0.222  VP 20 VN 3511 FP 2270 FN 599
+   fecha+14,77d  acuerdo 0.584  balanceada 0.332  MCC -0.212  VP 12 VN 3728 FP 2053 FN 607
+WAC_MOVIE_S20090927T2014  hora 2009-09-27 20:17:56 (archivo)  IMG PC_REAL 32 bits  validos 1.00  luz observada 0.12  umbral 0.0386
+   modelo        acuerdo 0.925  balanceada 0.953  MCC +0.743  VP 737 VN 5184 FP 471 FN 8
+   espejo        acuerdo 0.717  balanceada 0.426  MCC -0.125  VP 34 VN 4557 FP 1098 FN 711
+   giro180       acuerdo 0.781  balanceada 0.442  MCC -0.123  VP 0 VN 4997 FP 658 FN 745
+   fecha+14,77d  acuerdo 0.758  balanceada 0.429  MCC -0.137  VP 0 VN 4853 FP 802 FN 745
+MCC medio del modelo 0.737; supera a todos los controles en 5 de 5 fotogramas.
+RESULTADO DEL CRITERIO: APRUEBA

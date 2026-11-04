@@ -1,0 +1,8 @@
+Celdas comparadas: 121  |  sub-puntos por celda: 16  |  altura 2 m, radio solar 0.27
+comparacion                              sesgo  Pearson  Spearman error abs pendiente
+1 punto (centro)  vs LROC pixel           +1.8     0.68      0.75      23.0      0.23
+promedio de celda vs LROC pixel           +1.8     0.68      0.76      23.0      0.23
+1 punto (centro)  vs LROC media 3x3       +1.8     0.66      0.75      23.0      0.23
+promedio de celda vs LROC media 3x3       +1.8     0.67      0.76      23.0      0.23
+(pendiente: 1.0 = sin compresion; menor que 1 = nuestro modelo comprime hacia el medio)
+Variacion interna media dentro de una celda (max-min de los sub-puntos): 1.9 puntos

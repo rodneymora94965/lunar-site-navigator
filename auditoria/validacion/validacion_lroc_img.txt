@@ -1,0 +1,12 @@
+Etiqueta PDS: {'lines': 1214, 'samples': 1214, 'bits': 32, 'type': 'PC_REAL', 'scaling_factor': 1.0, 'offset': 0.0}
+Rango valido: -0.00 a 71.58 %; percentiles 50/99/99,9: [7.26, 43.26, 48.86]
+Periodo del modelo: 2010-02-15, 0,972 anos, cada hora. Config. de la app: 5 m, Sol puntual, 360 azimuts, 200 km.
+tipo       config     n    sesgo   MAE   r      pendiente
+celda      h2_punto   121    -0.7   1.3  0.977   0.94
+celda      h5_punto   121    -0.3   1.3  0.985   1.00
+celda      h5_disco   121    +1.2   1.6  0.987   1.08
+celda      h10_punto  121    +0.3   1.4  0.986   1.06
+candidato  h2_punto   10     +4.3   4.3  0.961   1.01
+candidato  h5_punto   10     +7.4   7.4  0.902   1.04
+candidato  h5_disco   10     +9.5   9.5  0.892   1.13
+candidato  h10_punto  10    +10.5  10.5  0.844   1.09

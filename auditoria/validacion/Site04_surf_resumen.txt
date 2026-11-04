@@ -1,0 +1,12 @@
+DEM: datos/Site04_surf.tif  |  3200 x 3200 px  |  resolucion 5.0 x 5.0 m
+Limites (m): izq -9000.0, abajo -15000.0, der 7000.0, arriba 1000.0
+Celdas sin dato: 0.00 %
+Elevacion (m): min -2847.9, max 1805.1, desnivel 4652.9
+  centro: x=-1000 y=-7000 -> lat -89.7668, lon -171.870
+  esquina sup-izq: x=-9000 y=1000 -> lat -89.7014, lon -83.660
+  (x=0,y=0) -> lat -90.000 (debe ser -90)
+Pendiente propia (grados): media 20.66, mediana 20.55, p95 34.56, max 69.65
+Celdas con pendiente <= 10 grados: 18.8 % de las validas
+Pendiente NASA: min 0.00, max 69.65, media 20.66
+  Diferencia absoluta propia vs NASA: media 0.00, p95 0.00 grados; correlacion 1.000
+  Coincidencia de celdas seguras (propia vs NASA): 100.0 %

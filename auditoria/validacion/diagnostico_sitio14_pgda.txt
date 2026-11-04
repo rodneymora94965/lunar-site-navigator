@@ -1,0 +1,87 @@
+1. Registro de PGDA frente a LROC IMG en Site04, sin modelo (n=25281)
+   mejores (r, dcol, dfila): [(np.float64(0.927), 1, 1), (np.float64(0.927), 1, 0), (np.float64(0.927), 0, 0), (np.float64(0.925), 0, 1)]
+   lectura de la etiqueta (0,0): r 0.927 | lectura anterior (-1,-1): r 0.911
+
+2. Sitio 14
+   Pixel segun etiqueta: fila 2518, col 2532: PGDA Sol 41.6, Tierra 55.5
+   Pixel de la lectura anterior: fila 2517, col 2531: PGDA Sol 0.0, Tierra 0.0
+   Area del bolson 0,33195 km2 = 92 pixeles de 60 m = 33 pixeles de 100 m; radio equivalente 325 m
+   PGDA en radio 100 m (n=9): Sol media 4.6, mediana 0.0, ceros 89 %, media sin ceros 41.6 | Tierra media 6.2, mediana 0.0, ceros 89 %, media sin ceros 55.5
+   PGDA en radio 200 m (n=37): Sol media 7.8, mediana 0.0, ceros 81 %, media sin ceros 41.2 | Tierra media 10.9, mediana 0.0, ceros 78 %, media sin ceros 50.4
+   PGDA en radio 325 m (n=93): Sol media 8.9, mediana 0.0, ceros 77 %, media sin ceros 39.4 | Tierra media 12.7, mediana 0.0, ceros 75 %, media sin ceros 51.2
+   Ventana 11x11 (+-300 m). Sol y Tierra con cualquier parte del disco, como PGDA. Salto >25 pp = pares vecinos con diferencia mayor a 25 puntos.
+   fuente               Sol centro Sol media Sol ceros% Sol salto% Tie centro Tie media Tie ceros% Tie salto%  r Sol  r Tie
+   PGDA                       41.6       9.5         75         37       55.5      13.8         69         37
+   modelo DEM 5m, 0 m         40.7      30.2          1          3       55.6      48.2          3          5   0.10   0.12
+   modelo DEM 5m, 2 m         47.1      38.5          0          2       55.6      51.9          0          0   0.17   0.14
+   modelo DEM 5m, 5 m         54.5      44.7          0          0       55.6      53.8          0          0   0.17   0.13
+   modelo DEM 60m, 0 m        40.7      34.3          0          5       55.6      50.6          2          2   0.08   0.09
+   modelo DEM 60m, 2 m        46.6      41.1          0          0       55.6      52.8          0          0   0.19   0.15
+   modelo DEM 60m, 5 m        56.7      46.4          0          0       55.6      54.3          0          0   0.16   0.12
+
+   PGDA Sol, ventana 11x11 (norte arriba):
+     0   0   0  38   0   0  32   0  34  28   0
+     0   0   0  37  37   0  28   0  43   0  43
+     0   0   0   0  38   0   0   0   0  35   0
+     0   0   0   0   0   0   0  49   0   0  32
+     0   0   0   0   0   0   0   0   0   0   0
+     0   0  32   0   0  42   0  52   0  28   0
+     0   0   0   0   0   0   0   0  48  37   0
+     0  44  46   0  29   0   0   0   0  39   0
+    47  48   0   0   0   0   0   0   0   0   0
+    48   0  48   0   0  37   0   0   0   0  27
+     0   0   0   0   0   0   0   0   0  23   0
+   Modelo DEM 5 m, 5 m, Sol con disco:
+    39  39  38  38  38  37  36  39  40  42  53
+    39  38  38  38  39  37  35  36  51  53  55
+    39  38  38  38  40  41  38  38  50  42  54
+    41  38  37  37  37  39  48  54  50  30  52
+    42  39  38  37  39  46  55  59  52  29  30
+    45  39  38  38  44  54  56  62  58  34  34
+    49  48  45  42  54  61  63  62  57  48  42
+    52  53  54  51  49  59  62  62  48  48  45
+    54  55  53  53  51  48  56  40  37  37  30
+    54  55  55  54  51  47  45  33  32  27  27
+    51  52  54  54  54  52  45  37  28  25  21
+   Modelo DEM 60 m, 0 m, Sol con disco:
+    38  38  38  38  37   5  17  32   4  12  36
+    38  37  37  37  37  35  29  28  40  41  44
+    37  35  36  36  37  37  29  30  38   8  34
+    38  34  34  34  33  34  38  47  26   3  28
+    38  34  34  33  34  36  41  51  33  13   8
+    37  31  32  34  35  41  43  51  38  23  22
+    38  37  34  33  36  42  59  45  44  37  32
+    41  41  43  38  26  46  59  44  35  40  38
+    44  48  43  45  34   6  31  28  28  28  27
+    47  49  46  42  40  29  26  27  26  26  24
+    45  42  44  43  46  42  28  27  23  22   8
+
+3. Candidatos
+   {'id': '14', 'area_km2': 0.33, 'pendiente': 4.93, 'modelo_sol_2010': '48.66', 'lroc_sol': '38.76', 'modelo_sol_19a': '49.11', 'sol_min': '32.9', 'sol_max': '58.2', 'modelo_disco': '55.19', 'pgda_sol_pixel': 41.6, 'pgda_sol_mediana_r100': 0.0, 'pgda_sol_ceros_r100': 89, 'modelo_tierra': '51.01', 'modelo_limbo': '55.51', 'tierra_min': '50.9', 'tierra_max': '51.0', 'pgda_tierra_pixel': 55.5, 'pgda_tierra_mediana_r100': 0.0, 'ambos_19a': '26.23', 'ambos_min': '19.6', 'ambos_max': '29.2', 'noche_19a': '16.96', 'noche_min': '17.0', 'noche_max': '23.1'}
+   {'id': '1358', 'area_km2': 0.21, 'pendiente': 4.58, 'modelo_sol_2010': '28.85', 'lroc_sol': '15.37', 'modelo_sol_19a': '28.8', 'sol_min': '19.2', 'sol_max': '33.7', 'modelo_disco': '31.46', 'pgda_sol_pixel': 23.8, 'pgda_sol_mediana_r100': 23.7, 'pgda_sol_ceros_r100': 0, 'modelo_tierra': '51.63', 'modelo_limbo': '56.2', 'tierra_min': '40.0', 'tierra_max': '51.7', 'pgda_tierra_pixel': 49.7, 'pgda_tierra_mediana_r100': 49.4, 'ambos_19a': '16.8', 'ambos_min': '7.4', 'ambos_max': '19.2', 'noche_19a': '25.67', 'noche_min': '13.1', 'noche_max': '26.6'}
+   {'id': '456', 'area_km2': 4.47, 'pendiente': 4.91, 'modelo_sol_2010': '20.83', 'lroc_sol': '14.95', 'modelo_sol_19a': '20.76', 'sol_min': '19.8', 'sol_max': '21.5', 'modelo_disco': '23.76', 'pgda_sol_pixel': 23.0, 'pgda_sol_mediana_r100': 22.8, 'pgda_sol_ceros_r100': 0, 'modelo_tierra': '50.47', 'modelo_limbo': '54.99', 'tierra_min': '50.4', 'tierra_max': '50.5', 'pgda_tierra_pixel': 55.1, 'pgda_tierra_mediana_r100': 55.1, 'ambos_19a': '14.4', 'ambos_min': '13.8', 'ambos_max': '14.9', 'noche_19a': '29.17', 'noche_min': '28.6', 'noche_max': '29.1'}
+   {'id': '964', 'area_km2': 1.21, 'pendiente': 4.15, 'modelo_sol_2010': '18.46', 'lroc_sol': '8.23', 'modelo_sol_19a': '18.32', 'sol_min': '18.3', 'sol_max': '19.7', 'modelo_disco': '20.62', 'pgda_sol_pixel': 17.5, 'pgda_sol_mediana_r100': 18.2, 'pgda_sol_ceros_r100': 0, 'modelo_tierra': '50.81', 'modelo_limbo': '55.36', 'tierra_min': '50.3', 'tierra_max': '51.0', 'pgda_tierra_pixel': 52.2, 'pgda_tierra_mediana_r100': 53.6, 'ambos_19a': '14.03', 'ambos_min': '13.9', 'ambos_max': '14.3', 'noche_19a': '116.67', 'noche_min': '29.4', 'noche_max': '117.5'}
+   {'id': '1417', 'area_km2': 2.84, 'pendiente': 4.64, 'modelo_sol_2010': '20.77', 'lroc_sol': '11.84', 'modelo_sol_19a': '20.9', 'sol_min': '6.3', 'sol_max': '28.6', 'modelo_disco': '22.72', 'pgda_sol_pixel': 15.9, 'pgda_sol_mediana_r100': 15.4, 'pgda_sol_ceros_r100': 0, 'modelo_tierra': '23.89', 'modelo_limbo': '29.93', 'tierra_min': '15.3', 'tierra_max': '28.5', 'pgda_tierra_pixel': 27.9, 'pgda_tierra_mediana_r100': 28.3, 'ambos_19a': '2.83', 'ambos_min': '0.0', 'ambos_max': '6.3', 'noche_19a': '26.5', 'noche_min': '23.8', 'noche_max': '176.4'}
+   {'id': '1643', 'area_km2': 1.94, 'pendiente': 4.72, 'modelo_sol_2010': '21.28', 'lroc_sol': '0.89', 'modelo_sol_19a': '21.8', 'sol_min': '2.9', 'sol_max': '32.7', 'modelo_disco': '24.89', 'pgda_sol_pixel': 7.8, 'pgda_sol_mediana_r100': 11.8, 'pgda_sol_ceros_r100': 0, 'modelo_tierra': '15.28', 'modelo_limbo': '23.89', 'tierra_min': '10.2', 'tierra_max': '19.6', 'pgda_tierra_pixel': 22.6, 'pgda_tierra_mediana_r100': 22.5, 'ambos_19a': '0.62', 'ambos_min': '0.0', 'ambos_max': '5.4', 'noche_19a': '58.21', 'noche_min': '22.8', 'noche_max': '206.1'}
+   {'id': '2298', 'area_km2': 0.41, 'pendiente': 6.05, 'modelo_sol_2010': '30.16', 'lroc_sol': '28.27', 'modelo_sol_19a': '30.25', 'sol_min': '30.1', 'sol_max': '30.7', 'modelo_disco': '32.13', 'pgda_sol_pixel': 31.5, 'pgda_sol_mediana_r100': 31.6, 'pgda_sol_ceros_r100': 0, 'modelo_tierra': '0.0', 'modelo_limbo': '3.93', 'tierra_min': '0.0', 'tierra_max': '0.3', 'pgda_tierra_pixel': 1.8, 'pgda_tierra_mediana_r100': 1.8, 'ambos_19a': '0.0', 'ambos_min': '0.0', 'ambos_max': '0.1', 'noche_19a': '22.54', 'noche_min': '22.4', 'noche_max': '22.6'}
+   {'id': '2238', 'area_km2': 0.72, 'pendiente': 4.93, 'modelo_sol_2010': '4.51', 'lroc_sol': '1.56', 'modelo_sol_19a': '4.82', 'sol_min': '0.0', 'sol_max': '18.4', 'modelo_disco': '6.41', 'pgda_sol_pixel': 2.2, 'pgda_sol_mediana_r100': 1.6, 'pgda_sol_ceros_r100': 22, 'modelo_tierra': '0.0', 'modelo_limbo': '0.0', 'tierra_min': '0.0', 'tierra_max': '0.0', 'pgda_tierra_pixel': 0.0, 'pgda_tierra_mediana_r100': 0.0, 'ambos_19a': '0.0', 'ambos_min': '0.0', 'ambos_max': '0.0', 'noche_19a': '234.96', 'noche_min': '145.0', 'noche_max': '6939.8'}
+   {'id': '616', 'area_km2': 2.55, 'pendiente': 4.98, 'modelo_sol_2010': '0.0', 'lroc_sol': '0.0', 'modelo_sol_19a': '0.0', 'sol_min': '0.0', 'sol_max': '0.0', 'modelo_disco': '0.0', 'pgda_sol_pixel': 0.0, 'pgda_sol_mediana_r100': 0.0, 'pgda_sol_ceros_r100': 100, 'modelo_tierra': '0.0', 'modelo_limbo': '0.0', 'tierra_min': '0.0', 'tierra_max': '0.0', 'pgda_tierra_pixel': 0.0, 'pgda_tierra_mediana_r100': 0.0, 'ambos_19a': '0.0', 'ambos_min': '0.0', 'ambos_max': '0.0', 'noche_19a': '6939.75', 'noche_min': '6939.8', 'noche_max': '6939.8'}
+   {'id': '1598', 'area_km2': 0.59, 'pendiente': 5.07, 'modelo_sol_2010': '0.0', 'lroc_sol': '0.0', 'modelo_sol_19a': '0.0', 'sol_min': '0.0', 'sol_max': '0.0', 'modelo_disco': '0.0', 'pgda_sol_pixel': 0.0, 'pgda_sol_mediana_r100': 0.0, 'pgda_sol_ceros_r100': 100, 'modelo_tierra': '0.0', 'modelo_limbo': '2.27', 'tierra_min': '0.0', 'tierra_max': '0.2', 'pgda_tierra_pixel': 0.5, 'pgda_tierra_mediana_r100': 0.4, 'ambos_19a': '0.0', 'ambos_min': '0.0', 'ambos_max': '0.0', 'noche_19a': '6939.75', 'noche_min': '6939.8', 'noche_max': '6939.8'}
+
+4. Moteado: pares vecinos con diferencia >25 pp y pixeles en cero, en ventanas de +-300 m
+   sitio    PGDA Sol ceros% PGDA Sol salto% LROC ceros%  LROC <1% LROC salto%     LROC min/med/max mod 5m ceros%
+   14                    75              37           0         0           0   22.1/ 32.4/ 45.5
+   1358                   7               4           0         0           0   11.1/ 19.7/ 31.2
+   456                    2               0           0         0           0   10.1/ 14.9/ 20.7
+   964                    0               0           0         0           0    3.2/ 12.6/ 18.5
+   1417                   2               0           0         0           0    8.8/ 17.8/ 28.1
+   2298                   2               6           0         0           0   25.3/ 28.3/ 31.2
+   Moteado de PGDA por distancia al polo en todo el mapa (pares vecinos con salto >25 pp, Sol y Tierra):
+     0-1   km: Sol  21.0 %  Tierra  20.7 %
+     1-2   km: Sol   5.3 %  Tierra   4.7 %
+     2-4   km: Sol   0.5 %  Tierra   0.5 %
+     4-8   km: Sol   0.6 %  Tierra   1.1 %
+     8-15  km: Sol   1.2 %  Tierra   1.9 %
+    15-25  km: Sol   1.6 %  Tierra   1.8 %
+    25-50  km: Sol   0.1 %  Tierra   0.5 %
+    50-100 km: Sol   0.1 %  Tierra   0.3 %

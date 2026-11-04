@@ -1,0 +1,10 @@
+id,region,codigo,sitio_publicado,lat,lon,n_sitios,dist_centro_km,radio_grupo_km,dist_polo_km,necesita_120m
+rpcb,Peak near Cabeus B,PCB,PCB03,-83.563,-68.2009,5,3.01,9.8,195.4,1
+rhw,Haworth,HW,HW02,-86.8076,-21.7194,11,2.01,16.4,96.8,1
+rmma,Malapert Massif,MMA,MMA01,-85.9425,-0.94365,5,3.92,8.1,123.1,1
+rmmp,Mons Mouton Plateau,MMP,MMP06,-84.5961,30.4525,11,1.97,31.8,164.0,1
+rmmo,Mons Mouton,MMO,MMO01,-85.416,31.8506,10,1.71,11.4,139.1,1
+rnr1,Nobile Rim 1,NR1,NR107,-85.1978,37.1774,9,0.35,10.9,145.7,1
+rnr2,Nobile Rim 2,NR2,NR208,-83.9064,57.8114,9,2.0,9.3,185.0,1
+rdgr2,de Gerlache Rim 2,dGR2,dGR203,-88.1408,-71.6955,7,3.01,9.7,56.4,0
+rsp,Slater Plain,SP,SP07,-87.1306,127.857,11,2.98,10.3,87.0,0

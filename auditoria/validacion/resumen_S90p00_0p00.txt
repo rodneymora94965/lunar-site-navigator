@@ -1,0 +1,11 @@
+Sitio: lat -90.0, lon 0.0  |  inicio 2026-11-01  |  10.0 anos  |  paso 1.0 h
+Marco: MOON_ME
+Sol (centro del disco): elevacion min -1.58, max 1.59 grados
+  fraccion del tiempo con el centro del Sol sobre el horizonte matematico: 50.8 %
+Tierra: elevacion min -7.11, max 6.62 grados
+  fraccion del tiempo con la Tierra sobre el horizonte matematico: 49.3 %
+
+CHEQUEOS:
+  Sol cerca del polo debe quedar dentro de ~±1.6 grados (oblicuidad lunar ~1.54): OK
+  Tierra cerca del polo debe quedar dentro de ~±10 grados (libracion): OK
+  Nota: sin relieve. El horizonte real hay que calcularlo con el DEM.

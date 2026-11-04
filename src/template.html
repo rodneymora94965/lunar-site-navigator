@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lunar Site Navigator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Consola de planificación: ámbar para el Sol, azul para la Tierra. */
+:root{
+  --bg:#f3f5f8; --panel:#ffffff; --panel2:#eaeef4; --line:#cfd7e3; --fg:#121a27; --muted:#56667d;
+  --sun:#c97800; --sun-t:#8a5200; --earth-t:#1a5fae; --earth:#1f6fc9; --ok:#13875a; --bad:#c2392d; --sky:#dfe7f2; --ground:#5b6574; --ground2:#3d4552;
+  --fd:'Barlow Condensed','Arial Narrow',sans-serif; --fb:'IBM Plex Sans',system-ui,sans-serif; --fm:'IBM Plex Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#080d15; --panel:#101826; --panel2:#17212f; --line:#25324a; --fg:#e7edf6; --muted:#8fa2bd;
+  --sun:#ffb347; --sun-t:#ffb347; --earth-t:#5cb2ff; --earth:#5cb2ff; --ok:#4fd18b; --bad:#ff7066; --sky:#050810; --ground:#2b3340; --ground2:#1b212b; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#080d15; --panel:#101826; --panel2:#17212f; --line:#25324a; --fg:#e7edf6; --muted:#8fa2bd;
+  --sun:#ffb347; --sun-t:#ffb347; --earth-t:#5cb2ff; --earth:#5cb2ff; --ok:#4fd18b; --bad:#ff7066; --sky:#050810; --ground:#2b3340; --ground2:#1b212b; color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);font-size:15px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+*{box-sizing:border-box}
+.wrap{max-width:1320px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;padding:28px 0 18px;border-bottom:1px solid var(--line)}
+h1{font-family:var(--fd);font-weight:700;font-size:clamp(30px,5vw,46px);letter-spacing:.01em;line-height:1;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:8px 0 0;max-width:68ch}
+.eyebrow{font-family:var(--fm);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sun-t);margin:0 0 8px}
+.tools{display:flex;gap:8px;align-items:center}
+button,select,input{font:inherit;color:inherit}
+.btn{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 12px;cursor:pointer;min-height:40px}
+.btn:hover{border-color:var(--sun)}
+.btn:focus-visible,.chip:focus-visible,input:focus-visible,canvas:focus-visible{outline:2px solid var(--earth);outline-offset:2px}
+.btn.primary{background:var(--sun);color:#1a1205;border-color:var(--sun);font-weight:600}
+h2{font-family:var(--fd);font-size:28px;font-weight:600;margin:0 0 4px;letter-spacing:.01em}
+section{margin-top:34px}
+.lead{color:var(--muted);margin:0 0 14px;max-width:80ch}
+.controls{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;margin-top:20px}
+@media (max-width:900px){.controls{grid-template-columns:minmax(0,1fr)}}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.box h3{margin:0 0 10px;font-family:var(--fm);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.grp{font-size:12px;color:var(--muted);margin:10px 0 6px;font-family:var(--fm)}
+.chip{border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 12px;cursor:pointer;min-height:36px;font-size:14px}
+.chip[aria-pressed="true"]{border-color:var(--sun);box-shadow:inset 0 0 0 1px var(--sun);background:color-mix(in srgb,var(--sun) 14%,var(--panel2))}
+.hint{font-size:13px;color:var(--muted);margin-top:8px}
+.when{display:grid;gap:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+input[type=datetime-local]{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-height:40px;font-family:var(--fm);font-size:14px}
+input[type=range]{width:100%;accent-color:var(--sun)}
+.big{font-family:var(--fm);font-size:20px;color:var(--fg)}
+.ticks{position:relative;height:16px;font-family:var(--fm);font-size:11px;color:var(--muted);margin-top:-2px}.ticks span{position:absolute;transform:translateX(-50%)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:18px;margin-top:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
+.card h3{font-family:var(--fd);font-size:24px;font-weight:600;margin:0}
+.meta{font-family:var(--fm);font-size:12px;color:var(--muted);margin:2px 0 10px}
+canvas{display:block;width:100%;border-radius:8px;border:1px solid var(--line)}
+.status{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.st{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--panel2);min-width:0}
+.st .k{font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.st .v{font-family:var(--fd);font-size:26px;font-weight:600;line-height:1.1;margin-top:2px}
+.st .d{font-size:13px;color:var(--muted)}
+.st.sun .v.on{color:var(--sun-t)} .st.earth .v.on{color:var(--earth-t)}
+.v.off{color:var(--bad)}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;font-family:var(--fm);font-size:12px;margin-bottom:12px}
+@media (max-width:520px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.nums div{background:var(--panel2);border-radius:8px;padding:8px}
+.nums b{display:block;font-size:15px;font-weight:500;color:var(--fg)}
+.cap{font-size:12px;color:var(--muted);margin:6px 0 4px;font-family:var(--fm)}
+.bars{display:grid;gap:6px;margin-top:10px}
+.bar{display:grid;grid-template-columns:64px 1fr 56px;gap:8px;align-items:center;font-family:var(--fm);font-size:12px}
+.bar i{display:block;height:8px;border-radius:4px;background:var(--panel2);overflow:hidden}
+.bar i u{display:block;height:100%;text-decoration:none}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
+th{font-family:var(--fm);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.num{font-family:var(--fm)}
+td.best{color:var(--ok);font-weight:600}
+tr:last-child td{border-bottom:0}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.gal figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.gal img,video{display:block;width:100%;height:auto}
+.gal figcaption{padding:10px 12px;font-size:13px;color:var(--muted)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px}
+.why .box p{margin:0;color:var(--muted)}
+.why .box h3{color:var(--sun-t)}
+ul.lim{margin:0;padding-left:20px;color:var(--muted)} ul.lim li{margin:6px 0}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.err{background:color-mix(in srgb,var(--bad) 18%,var(--panel));border:1px solid var(--bad);border-radius:10px;padding:14px;margin-top:20px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;font-family:var(--fm);color:var(--muted);margin-top:6px}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;background:var(--c)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+
+.badge{display:inline-block;font-family:var(--fm);font-size:11px;border:1px solid var(--line);border-radius:6px;padding:2px 6px;margin:4px 0 2px;color:var(--muted)}
+.badge.top{border-color:var(--ok);color:var(--ok)}
+.hero-mark{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.72);color:#ffd678;font:600 12px var(--fm);padding:3px 8px;border-radius:6px}
+.dspanos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px}
+.shareurl{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-family:var(--fm);font-size:12px}
+.csvf{max-width:150px}
+#answer{margin-top:20px}
+.ansrow{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-top:8px}.ansrow .field{flex:0 1 240px;min-width:0}
+.ansdate{font-family:var(--fm);font-weight:500;color:var(--fg);font-size:15px;min-height:40px;display:flex;align-items:center}
+.ansgo{display:inline-flex;align-items:center;color:var(--fg);text-decoration:none;margin-top:8px}
+@media (max-width:600px){header{padding:14px 0 10px;gap:8px}.sub{display:none}.tools{position:absolute;right:16px;top:8px}.eyebrow{margin-right:110px}#answer{margin-top:10px;padding:12px}#answer h2{font-size:22px}.ansrow{flex-wrap:nowrap;gap:8px}.ansrow .field{flex:1 1 50%}.ansdate{font-size:12px}#answer .status{margin:8px 0}#answer .st .v{font-size:22px}.anstext{font-size:15px}}
+.anstext{font-size:17px;color:var(--fg);margin:8px 0 0;max-width:80ch}
+canvas.calcv{display:block;width:100%;margin-top:10px;cursor:pointer;border-radius:8px}
+.callegend{display:flex;align-items:center;gap:8px;font-family:var(--fm);font-size:11px;color:var(--muted);margin-top:6px}.callegend i{flex:0 1 200px;height:8px;border-radius:4px;background:linear-gradient(to right,var(--panel2),var(--ok))}
+.field .btn{color:var(--fg)}
+.warn{color:var(--bad);font-size:13px;margin-top:8px;min-height:1em}
+.field{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted);min-width:0}
+.field input,.field select,select.sel{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-height:40px;font-size:14px;color:var(--fg);width:100%;font-family:var(--fm)}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:10px;margin-top:8px}
+.st .d b{font-weight:500;color:var(--fg)}
+.nums.n8{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:520px){.nums.n8{grid-template-columns:repeat(2,minmax(0,1fr))}.bar{grid-template-columns:52px 1fr 92px}}
+.bar{grid-template-columns:64px 1fr 104px}
+.hgrid{display:grid;grid-template-columns:44px repeat(9,minmax(0,1fr));gap:2px;font-family:var(--fm);font-size:11px;max-width:560px}
+.hgrid div{display:flex;align-items:center;justify-content:center;min-height:32px;border-radius:3px;color:var(--fg)}
+.hgrid .lab{color:var(--muted);background:none}
+.hgrid .c0{outline:2px solid var(--fg);outline-offset:-2px}
+.stat3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;margin:12px 0}
+canvas.delay{height:150px;cursor:pointer}
+ul.lim b{color:var(--fg);font-weight:500}
+html,body{overflow-x:clip}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <p class="eyebrow" id="eyebrow"></p>
+    <h1 id="h1"></h1>
+    <p class="sub" id="sub"></p>
+  </div>
+  <div class="tools">
+    <button class="btn" id="lang" aria-label="Language / idioma">EN</button>
+    <button class="btn" id="theme" aria-label="Theme / tema">◐</button>
+  </div>
+</header>
+
+<div id="loading" class="box" style="margin-top:20px"></div>
+<div id="error" class="err" hidden></div>
+
+<main id="app" hidden>
+<section id="answer" class="box">
+  <h2 id="t-ans"></h2>
+  <div class="ansrow">
+    <label class="field"><span id="l-ans-site"></span><select id="ans-site"></select></label>
+    <div class="field"><span id="l-ans-at"></span><b class="ansdate" id="ans-at"></b></div>
+  </div>
+  <div class="status"><div class="st sun"><div class="k" id="ans-ks"></div><div class="v" id="ans-sv"></div><div class="d" id="ans-sd"></div></div><div class="st earth"><div class="k" id="ans-kt"></div><div class="v" id="ans-tv"></div><div class="d" id="ans-td"></div></div></div>
+  <p class="anstext" id="ans-text" role="status"></p>
+  <div id="ans-warn"></div>
+  <p class="hint" id="ans-note"></p>
+  <a class="btn ansgo" id="ans-go" href="#calendar"></a>
+</section>
+<div class="controls">
+  <div class="box">
+    <h3 id="t-sites"></h3>
+    <div id="chips"></div>
+    <p class="hint" id="hint-sites"></p>
+    <p class="warn" id="warn-sites" role="status"></p>
+    <h3 id="t-custom" style="margin-top:14px"></h3>
+    <div class="fields">
+      <label class="field"><span id="l-lat"></span><input id="c-lat" type="number" step="0.001" min="-90" max="-80" value="-89.70"></label>
+      <label class="field"><span id="l-lon"></span><input id="c-lon" type="number" step="0.001" min="-180" max="360" value="-160.00"></label>
+      <div class="field"><span>&nbsp;</span><button class="btn" id="c-add"></button></div>
+    </div>
+    <p class="hint" id="hint-custom"></p>
+    <p class="warn" id="warn-custom" role="status"></p>
+  </div>
+  <div class="box when">
+    <h3 id="t-when"></h3>
+    <div class="row"><input type="datetime-local" id="dt" step="3600"><span class="big" id="dtbig"></span></div>
+    <div><input type="range" id="slider" min="0" value="0"><div class="ticks" id="ticks"></div></div>
+    <div class="row" id="nav"></div>
+    <p class="hint" id="hint-when"></p>
+    <div class="fields">
+      <label class="field"><span id="l-margin"></span><select id="margin"><option value="0">0°</option><option value="3">3°</option><option value="5">5°</option></select></label>
+      <label class="field"><span id="l-area"></span><input id="p-area" type="number" min="0.01" step="0.1" value="1"></label>
+      <label class="field"><span id="l-eff"></span><input id="p-eff" type="number" min="1" max="100" step="1" value="30"></label>
+    </div>
+    <p class="hint" id="hint-power"></p>
+    <div class="row"><button class="btn" id="share"></button><button class="btn" id="csv"></button><label class="field csvf"><span id="l-csv"></span><input id="csv-days" type="number" min="1" max="366" step="1" value="30"></label></div>
+    <input id="share-url" class="shareurl" readonly hidden>
+    <p class="hint" id="hint-csv"></p><p class="hint" id="share-msg" role="status"></p>
+  </div>
+</div>
+
+<section id="eleccion">
+  <h2 id="t-choice"></h2>
+  <p class="lead" id="l-choice"></p>
+  <div class="why">
+    <div class="box"><h3 id="t-main"></h3><ul class="lim" id="main-list"></ul></div>
+    <div class="box"><h3 id="t-contrast"></h3><ul class="lim" id="contrast-list"></ul></div>
+    <div class="box"><h3 id="t-crit"></h3><ul class="lim" id="crit-list"></ul><p class="hint" id="crit-note"></p></div>
+  </div>
+</section>
+
+<div class="cards" id="cards"></div>
+
+<section id="compare">
+  <h2 id="t-compare"></h2>
+  <p class="lead" id="l-compare"></p>
+  <p class="warn" id="warn-mix" role="status"></p>
+  <div class="tablewrap" tabindex="0" role="region"><table id="tbl"></table></div>
+</section>
+
+<section id="calendar">
+  <h2 id="t-cal"></h2>
+  <p class="lead" id="l-cal"></p>
+  <div class="box">
+    <div class="fields">
+      <label class="field"><span id="l-cal-site"></span><select id="cal-site"></select></label>
+      <label class="field"><span id="l-cal-year"></span><select id="cal-year"></select></label>
+      <label class="field"><span id="l-cal-met"></span><select id="cal-met"></select></label>
+    </div>
+    <div class="meta" id="cal-meta" style="margin-top:10px"></div>
+    <div id="cal-warn"></div>
+    <canvas class="calcv" id="cal-cv" role="img" tabindex="0"></canvas>
+    <div class="callegend" aria-hidden="true"><span>0 %</span><i id="cal-grad"></i><span>100 %</span></div>
+    <p class="anstext" id="cal-read" role="status"></p>
+    <p class="hint" id="cal-max"></p>
+    <div class="row"><button class="btn" id="cal-use"></button></div>
+    <p class="hint" id="cal-hint"></p>
+  </div>
+</section>
+
+<section id="dates">
+  <h2 id="t-dates"></h2>
+  <p class="lead" id="l-dates"></p>
+  <div class="box">
+    <div class="fields">
+      <label class="field"><span id="l-ds-site"></span><select id="ds-site"></select></label>
+      <label class="field"><span id="l-ds-a"></span><input id="ds-a" type="datetime-local" step="3600"></label>
+      <label class="field"><span id="l-ds-b"></span><input id="ds-b" type="datetime-local" step="3600"></label>
+    </div>
+    <div class="meta" id="ds-meta" style="margin-top:10px"></div>
+    <div class="dspanos"><div><div class="cap" id="ds-cap-a"></div><canvas class="pano" id="ds-pano-a"></canvas></div><div><div class="cap" id="ds-cap-b"></div><canvas class="pano" id="ds-pano-b"></canvas></div></div>
+    <div class="tablewrap" tabindex="0" role="region" style="margin-top:12px"><table id="ds-tbl"></table></div>
+  </div>
+</section>
+
+<section id="planner">
+  <h2 id="t-plan"></h2>
+  <p class="lead" id="l-plan"></p>
+  <div class="box">
+    <div class="fields">
+      <label class="field"><span id="l-psite"></span><select id="p-site"></select></label>
+      <label class="field"><span id="l-launch"></span><input id="p-launch" type="datetime-local" step="3600"></label>
+      <label class="field"><span id="l-cruise"></span><input id="p-cruise" type="number" min="0" max="60" step="1" value="5"></label>
+      <label class="field"><span id="l-dur"></span><input id="p-dur" type="number" min="1" max="120" step="1" value="14"></label>
+      <label class="field"><span id="l-delay"></span><input id="p-delay" type="number" min="0" max="60" step="1" value="7"></label>
+    </div>
+    <p class="warn" id="warn-plan" role="status"></p>
+    <div class="tablewrap" tabindex="0" role="region" style="margin-top:12px"><table id="plan-tbl"></table></div>
+    <div class="cap" id="cap-delay" style="margin-top:12px"></div>
+    <canvas class="delay" id="delay-cv" role="img"></canvas>
+    <p class="hint" id="plan-best"></p>
+  </div>
+</section>
+
+<section id="heat">
+  <h2 id="t-heat"></h2>
+  <p class="lead" id="l-heat"></p>
+  <div class="box">
+    <div class="fields" style="max-width:560px">
+      <label class="field"><span id="l-hsite"></span><select id="h-site"></select></label>
+      <label class="field"><span id="l-hmet"></span><select id="h-met"></select></label>
+    </div>
+    <div class="stat3" id="h-stat"></div>
+    <div class="hgrid" id="h-grid" role="img"></div>
+    <p class="hint" id="h-note"></p>
+  </div>
+</section>
+
+<section id="vista3d">
+  <h2 id="t-3d"></h2>
+  <p class="lead" id="l-3d"></p>
+  <div class="gal" id="gal"></div>
+  <div class="two" style="margin-top:14px">
+    <figure class="gal" style="display:block;margin:0"><figure style="position:relative;margin:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden"><span class="hero-mark" id="hero-mark">Illustrative render · AI-assisted</span><img id="hero" alt="" src="data:image/jpeg;base64,__IMG_hero__"><figcaption id="cap-hero"></figcaption></figure></figure>
+    <figure class="gal" style="display:block;margin:0"><figure style="margin:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden"><video controls loop muted playsinline preload="metadata" src="data:video/mp4;base64,__VIDEO__"></video><figcaption id="cap-video"></figcaption></figure></figure>
+  </div>
+</section>
+
+<section id="why-sec">
+  <h2 id="t-why"></h2>
+  <div class="why" id="why"></div>
+</section>
+
+<section id="about">
+  <h2 id="t-about"></h2>
+  <div class="two">
+    <div class="box"><h3 id="t-method"></h3><ul class="lim" id="method"></ul></div>
+    <div class="box"><h3 id="t-valid"></h3><ul class="lim" id="valid"></ul></div>
+    <div class="box"><h3 id="t-limits"></h3><ul class="lim" id="limits"></ul></div>
+  </div>
+</section>
+</main>
+
+<footer id="foot"></footer>
+</div>
+
+<script>
+__CORE__
+const DATA = __DATA__;
+const IMG = {"14":"__IMG_14__","456":"__IMG_456__","964":"__IMG_964__","1358":"__IMG_1358__"};
+__APP__
+</script>
+</body>
+</html>

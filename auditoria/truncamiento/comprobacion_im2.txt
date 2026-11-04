@@ -1,0 +1,5 @@
+IM-2: x 77108 m, y 137993 m, distancia al polo 158.1 km, observador 5327 m
+Azimuts que salen de la extension del DEM de 80 m: 68 de 360. Sin NaN en ninguno con la capa lejana.
+En esos azimuts, el terreno cercano queda por encima del lejano: margen minimo 2.298 grados, mediana 3.001. Peor azimut 349, desde 174.7 km.
+Con 240 m: margen minimo 2.298 grados.
+Azimuts donde el terreno lejano define el horizonte: 0 con 120 m, 0 con 240 m.

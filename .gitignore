@@ -1,0 +1,29 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.tif
+*.TIF
+*.tiff
+*.TIFF
+# Large LOLA DEMs
+*.img
+*.IMG
+# SPICE kernels (binary, text, and transfer kernels)
+*.bsp
+*.BSP
+*.tls
+*.tpc
+*.tf
+*.ti
+*.bc
+*.bpc
+*.ker
+*.mk
+kernels/
+efemerides_*.csv
+
+.cache/
+auditoria/datos_externos/*.IMG
+auditoria/datos_externos/*.TIF
+!auditoria/validacion/WAC_POLE_ILL_PCT_SOUTH_100M.IMG
+auditoria/datos_externos/fotogramas_lroc/

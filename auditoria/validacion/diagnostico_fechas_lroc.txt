@@ -1,0 +1,8 @@
+Diagnostico posterior: no forma parte del criterio ni cambia el veredicto.
+valor = I/F del fotograma; dist = distancia a un punto con luz observada, en la malla de 200 m
+2009-10-22  precision 0.30  sensibilidad 0.96  luz modelo/imagen 3.25  mediana VP 0.0790 FP 0.0192 VN 0.0011 umbral 0.0423  FP sobre medio umbral 0.42  FP a 200 m o menos 0.11, a 400 m o menos 0.19
+2009-11-06  precision 0.83  sensibilidad 1.00  luz modelo/imagen 1.21  mediana VP 0.0409 FP 0.0152 VN 0.0006 umbral 0.0222  FP sobre medio umbral 0.66  FP a 200 m o menos 0.61, a 400 m o menos 0.86
+2009-11-01  precision 0.76  sensibilidad 0.99  luz modelo/imagen 1.31  mediana VP 0.0322 FP 0.0096 VN 0.0006 umbral 0.0172  FP sobre medio umbral 0.56  FP a 200 m o menos 0.57, a 400 m o menos 0.81
+2009-11-16  precision 0.65  sensibilidad 0.99  luz modelo/imagen 1.52  mediana VP 0.0223 FP 0.0047 VN 0.0003 umbral 0.0123  FP sobre medio umbral 0.39  FP a 200 m o menos 0.60, a 400 m o menos 0.84
+2009-09-27  precision 0.61  sensibilidad 0.99  luz modelo/imagen 1.62  mediana VP 0.0711 FP 0.0164 VN 0.0020 umbral 0.0386  FP sobre medio umbral 0.43  FP a 200 m o menos 0.31, a 400 m o menos 0.44
+Total: VP 5084 FP 2797 FN 51 VN 24068; puntos con luz modelo 7881, imagen 5135; precision 0.645, sensibilidad 0.990

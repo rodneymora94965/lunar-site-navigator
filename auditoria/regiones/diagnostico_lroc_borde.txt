@@ -1,0 +1,8 @@
+LROC y PGDA (Sol) en una malla de 500 m, sin el modelo. Diagnostico posterior; no demuestra la causa.
+km del polo | puntos validos en LROC | mediana LROC | mediana PGDA | mediana PGDA-LROC, puntos con PGDA >= 40 %
+0-20 | 5013 de 5013 | 13.1 | 14.3 | +3.2 (237)
+20-30 | 6264 de 6264 | 14.9 | 18.3 | +1.9 (201)
+30-40 | 8792 de 8792 | 10.5 | 13.6 | +3.9 (317)
+40-50 | 11328 de 11328 | 4.6 | 7.1 | +1.5 (312)
+50-55 | 6572 de 6572 | 2.5 | 4.2 | +1.6 (150)
+55-60 | 7244 de 7244 | 3.5 | 5.6 | +4.0 (190)
