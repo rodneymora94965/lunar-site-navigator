@@ -100,6 +100,7 @@ footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:v
 .dspanos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px}
 .shareurl{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-family:var(--fm);font-size:12px}
 .csvf{max-width:150px}
+.vidbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:14px}.vidbar .btn{color:var(--fg);text-decoration:none;display:inline-flex;align-items:center}.vidalt{color:var(--fg);font-size:14px}.vidbar .hint{margin:0}
 #answer{margin-top:20px}
 .ansrow{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-top:8px}.ansrow .field{flex:0 1 240px;min-width:0}
 .ansdate{font-family:var(--fm);font-weight:500;color:var(--fg);font-size:15px;min-height:40px;display:flex;align-items:center}
@@ -145,6 +146,7 @@ html,body{overflow-x:clip}
 <div id="error" class="err" hidden></div>
 
 <main id="app" hidden>
+<div class="vidbar" id="vidbar"><a class="btn" id="vid-main" target="_blank" rel="noopener"></a><a class="vidalt" id="vid-alt" target="_blank" rel="noopener"></a><span class="hint" id="vid-note"></span></div>
 <section id="answer" class="box">
   <h2 id="t-ans"></h2>
   <div class="ansrow">

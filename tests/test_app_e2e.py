@@ -461,3 +461,16 @@ def test_share_link_keeps_answer_site_and_calendar(browser, page_url):
     bad, err2 = opened(browser, page.input_value("#share-url").split("#")[0] + "#cy=1999&cm=7&cl=99&cd=-3&cs=nada", **DESK)
     assert bad.evaluate("[S.calSite,S.cal.year,S.cal.met,S.cal.day,S.cal.len]") == ["456", 2030, 0, 171, 14]
     assert not errors and not err and not err2
+
+
+def test_explainer_video_link_follows_language_and_file_exists(browser, page_url):
+    page, errors = opened(browser, page_url, **DESK)
+    assert "Ver video explicativo" in page.inner_text("#vid-main")
+    hrefs = [page.evaluate("document.querySelector('#vid-main').href"), page.evaluate("document.querySelector('#vid-alt').href")]
+    assert hrefs[0].endswith("videos/lsn_explicativo_es.mp4") and hrefs[1].endswith("videos/lsn_explicativo_en.mp4")
+    for h in hrefs:
+        assert (ROOT / "videos" / h.rsplit("/", 1)[-1]).exists(), h
+    page.click("#lang")
+    assert "Watch the explainer video" in page.inner_text("#vid-main")
+    assert page.evaluate("document.querySelector('#vid-main').href").endswith("videos/lsn_explicativo_en.mp4")
+    assert not errors

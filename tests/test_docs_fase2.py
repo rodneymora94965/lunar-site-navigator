@@ -37,3 +37,16 @@ def test_three_minute_script_fits_at_150_words_per_minute():
     import re
     t = (ROOT / "docs" / "entrega" / "guion_presentacion_3min.md").read_text(encoding="utf-8").split("## Las 3 preguntas")[0]
     assert len(re.sub(r"\*\[.*?\]\*|^#.*$|\*\*Borrador\.\*\*", "", t, flags=re.M).split()) <= 450
+
+
+def test_explainer_videos_are_separate_files_and_linked():
+    import hashlib
+    v = ROOT / "videos"
+    for n in ("lsn_explicativo_es.mp4", "lsn_explicativo_en.mp4"):
+        assert (v / n).stat().st_size > 1_000_000 and f"videos/{n}" in README
+    app = (ROOT / "src" / "app.js").read_text(encoding="utf-8")
+    assert "'videos/lsn_explicativo_'" in app
+    html = ROOT / "final.html"
+    if html.exists():
+        assert html.stat().st_size < 5_000_000
+        assert hashlib.sha256((v / "lsn_explicativo_es.mp4").read_bytes()).hexdigest()[:16] not in html.read_text(encoding="utf-8")

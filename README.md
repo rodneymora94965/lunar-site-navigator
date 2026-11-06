@@ -6,6 +6,8 @@
 
 **Live app / App en linea:** https://lunar-site-navigator.rodneymora94965.workers.dev
 
+**Explainer video / Video explicativo:** [English voice, 3:28](videos/lsn_explicativo_en.mp4) · [voz en español, 3:38](videos/lsn_explicativo_es.mp4). Subtitles in English and Spanish; 3D scenes are illustrative and AI-assisted.
+
 ## English
 
 A single-file web tool for comparing landing sites and dates near the lunar south pole: when there is Sun for power and when there is line of sight to Earth, using precomputed ephemerides and terrain horizons.

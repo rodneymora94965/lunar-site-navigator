@@ -17,6 +17,7 @@ const I18N = {
   errCoord:"Coordenadas fuera de la cobertura del DEM (80°S a 90°S).", computing:"Calculando horizonte y malla de ±100 m…", edge:"Atención: a menos de 200 km del borde del DEM, el horizonte queda truncado hacia afuera.",
   customName:(n)=>`Personalizado ${n}`,
   tWhen:"Fecha y hora (UTC)", hintWhen:(a,b)=>`Datos horarios de ${a} a ${b}. Costa Rica es UTC−6.`,
+  vidMain:"▶ Ver video explicativo (3:38, voz en español, subtítulos ES/EN)",vidAlt:"Versión con voz en inglés (3:28)",vidNote:"Video aparte: la app no lo necesita para funcionar. Las escenas 3D del video son ilustrativas.",
   tAns:"¿Hay Sol y Tierra aquí y ahora?",lAnsSite:"Sitio",lAnsAt:"Fecha elegida",ansGo:"Ver calendario de ventanas",
   ansNow:{both:"Hay Sol para generar energía y línea de vista a la Tierra.",onlySun:"Hay Sol para generar energía, pero sin línea de vista a la Tierra.",onlyEar:"Hay línea de vista a la Tierra, pero sin Sol.",none:"No hay Sol ni línea de vista a la Tierra."},
   ansEnds:(t)=>`Con ambos, esta ventana termina en ${t}.`,ansNext:(d,t)=>`Próxima ventana con ambos: ${d}, dentro de ${t}.`,ansNoNext:"No hay otra ventana con ambos en los datos.",ansNote:"Salida del modelo en este punto. Sirve para comparar, no certifica un aterrizaje.",
@@ -94,6 +95,7 @@ const I18N = {
   errCoord:"Coordinates outside DEM coverage (80°S to 90°S).", computing:"Computing horizon and ±100 m grid…", edge:"Warning: within 200 km of the DEM edge the horizon is truncated outward.",
   customName:(n)=>`Custom ${n}`,
   tWhen:"Date and time (UTC)", hintWhen:(a,b)=>`Hourly data from ${a} to ${b}. Costa Rica is UTC−6.`,
+  vidMain:"▶ Watch the explainer video (3:28, English voice, EN/ES subtitles)",vidAlt:"Spanish-voice version (3:38)",vidNote:"Separate file: the app does not need it to work. The 3D scenes in the video are illustrative.",
   tAns:"Is there Sun and Earth here and now?",lAnsSite:"Site",lAnsAt:"Chosen date",ansGo:"See window calendar",
   ansNow:{both:"There is Sun for power and line of sight to Earth.",onlySun:"There is Sun for power, but no line of sight to Earth.",onlyEar:"There is line of sight to Earth, but no Sun.",none:"There is no Sun and no line of sight to Earth."},
   ansEnds:(t)=>`With both, this window ends in ${t}.`,ansNext:(d,t)=>`Next window with both: ${d}, in ${t}.`,ansNoNext:"There is no other window with both in the data.",ansNote:"Model output at this point. Use it to compare; it does not certify a landing.",
@@ -636,6 +638,7 @@ function setText(){
   const pl=document.createElement('button');pl.className='btn';pl.id='play';pl.onclick=togglePlay;nv.insertBefore(pl,nv.firstChild);playLabel();
   for(const [id,k] of [['share','share'],['csv','csvBtn'],['l-csv','lCsv'],['hint-csv','csvHint'],['t-ans','tAns'],['l-ans-site','lAnsSite'],['l-ans-at','lAnsAt'],['ans-go','ansGo'],['ans-note','ansNote'],['t-cal','tCal'],['l-cal','lCal'],['l-cal-site','lCalSite'],['l-cal-year','lCalYear'],['l-cal-met','lCalMet'],['cal-use','calUse'],['cal-hint','calHint'],['t-dates','tDates'],['l-dates','lDates'],['l-ds-site','lDsSite'],['l-ds-a','lDsA'],['l-ds-b','lDsB']])$(id).textContent=T[k];
   $('share-url').setAttribute('aria-label',T.share);
+  {const es=lang==='es',m=$('vid-main'),a=$('vid-alt');m.textContent=T.vidMain;a.textContent=T.vidAlt;$('vid-note').textContent=T.vidNote;m.href='videos/lsn_explicativo_'+(es?'es':'en')+'.mp4';a.href='videos/lsn_explicativo_'+(es?'en':'es')+'.mp4';}
   document.querySelectorAll('.tablewrap').forEach(w=>{const h=w.closest('section').querySelector('h2');if(h)w.setAttribute('aria-label',h.textContent);});
   $('gal').innerHTML=['456','14','1358','964'].map(id=>`<figure><img alt="${T.cap3d(id)}" src="data:image/jpeg;base64,${IMG[id]}"><figcaption>${T.cap3d(id)}</figcaption></figure>`).join('');
   $('hero').alt=T.capHero;$('dt').setAttribute('aria-label',T.tWhen);$('slider').setAttribute('aria-label',T.tWhen);
